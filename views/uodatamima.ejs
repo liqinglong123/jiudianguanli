@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>酒店管理系统</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <style>
+        body{
+            width:1360px;
+            height:904px;
+            /*background: url("/img/5.jpg");*/
+            background:#f5f5f5;
+            background-size: 100% 100%;
+            background: url(/img/img3.jpg);
+            background-size: cover;
+        }
+        .box{
+            width:100%;
+            height:100%;
+            position: relative;
+        }
+        .nav{
+            width:15%;
+            height:100%;
+            background: #fff;
+            /*background:rgba(200, 54, 54, 0.3);*/
+            font-size: 14px;
+            position: absolute;
+            left: 0;
+        }
+        ul li{
+            list-style: none;
+        }
+        li a {
+            color: #000;
+            text-align: center;
+            text-decoration: none;
+            margin-left: 15px;
+        }
+        .panel-title {
+            font-size: 13px;
+        }
+        .cont{
+            width:50%;
+            height:30%;
+            color: #000;
+            position: absolute;
+            left: 22%;
+            top:15%;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <div class="nav">
+        <ul>
+            <div class="leftMenu">
+                <div class="panel-heading" id="collapseListGroupHeading" data-toggle="collapse" data-target="#collapseListGroup" role="tab">
+                    <p class="panel-title">
+                        入住管理
+                        <span class="caret"></span>
+                    </p>
+                </div>
+                <div id="collapseListGroup" class="panel-collapse collapse" role="tabpanel" aria-labelledby="collapseListGroupHeading">
+                    <ul>
+                        <li><a href="/datang">大堂入住</a></li>
+                        <li><a href="/dingdan">订单入住</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="leftMenu">
+                <div class="panel-heading" id="collapseListGroupHeading1" data-toggle="collapse" data-target="#collapseListGroup1" role="tab">
+                    <p class="panel-title">
+                        退房管理
+                        <span class="caret"></span>
+                    </p>
+                </div>
+                <div id="collapseListGroup1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="collapseListGroupHeading1">
+                    <ul>
+                        <li><a href="/tuiroom">退房管理</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="leftMenu">
+                <div class="panel-heading" id="collapseListGroupHeading2" data-toggle="collapse" data-target="#collapseListGroup2" role="tab">
+                    <p class="panel-title">
+                        记录查询
+                        <span class="caret"></span>
+                    </p>
+                </div>
+                <div id="collapseListGroup2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="collapseListGroupHeading2">
+                    <ul>
+                        <li><a href="/comroot">记录查询</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="leftMenu">
+                <div class="panel-heading" id="collapseListGroupHeading3" data-toggle="collapse" data-target="#collapseListGroup3" role="tab">
+                    <p class="panel-title">
+                        房间管理
+                        <span class="caret"></span>
+                    </p>
+                </div>
+                <div id="collapseListGroup3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="collapseListGroupHeading3">
+                    <ul>
+                        <li><a href="/addroom">房间管理</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="leftMenu">
+                <div class="panel-heading" id="collapseListGroupHeading4" data-toggle="collapse" data-target="#collapseListGroup4" role="tab">
+                    <p class="panel-title">
+                        房类管理
+                        <span class="caret"></span>
+                    </p>
+                </div>
+                <div id="collapseListGroup4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="collapseListGroupHeading4">
+                    <ul>
+                        <li><a href="/leiroot">房类管理</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="leftMenu">
+                <div class="panel-heading" id="collapseListGroupHeading5" data-toggle="collapse" data-target="#collapseListGroup5" role="tab">
+                    <p class="panel-title">
+                        修改密码
+                        <span class="caret"></span>
+                    </p>
+                </div>
+                <div id="collapseListGroup5" class="panel-collapse collapse" role="tabpanel" aria-labelledby="collapseListGroupHeading5">
+                    <ul>
+                        <li><a href="/uodatamima">修改密码</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="leftMenu">
+                <div class="panel-heading" id="collapseListGroupHeading6" data-toggle="collapse" data-target="#collapseListGroup6" role="tab">
+                    <p class="panel-title">
+                        查看房间
+                        <span class="caret"></span>
+                    </p>
+                </div>
+                <div id="collapseListGroup6" class="panel-collapse collapse" role="tabpanel" aria-labelledby="collapseListGroupHeading6">
+                    <ul>
+                        <li><a href="/room">查看房间</a></li>
+                    </ul>
+                </div>
+            </div>
+        </ul>
+    </div>
+    <div class="cont">
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label for="yonghuming" class="col-sm-2 control-label">用户名</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="yonghuming" id="yonghuming" placeholder="">
+                    <em></em>
+                    <span class="explain"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="mima" class="col-sm-2 control-label">密码</label>
+                <div class="col-sm-10">
+                    <input type="password" class="form-control" name="mima" id="mima" placeholder="">
+                    <em></em>
+                    <span class="explain"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="button" id="update" class="btn btn-default">更改密码</button>
+                    <button type="button" id="yes" class="btn btn-default">
+                        <a href="/manage">取消</a>
+                    </button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+
+
+<script src="js/jquery-1.12.3.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/PageNav.js"></script>
+<script type="text/javascript" src="js/underscore.js"></script>
+<script>
+    $("#update").click(function () {
+        $.post("/changepw", {
+            "yonghuming": $("#yonghuming").val(),
+            "mima": $("#mima").val()
+        }, function (data) {
+            // console.log(data)
+            alert("修改成功，请重新登录");
+            window.location = "/manage"
+        });
+    });
+    $.get("/name", function (data) {
+        // var getname = data.results[0].yonghuming;
+        // $("#yonghuming").val(getname)
+    })
+
+
+</script>
+
+
+</body>
+</html>

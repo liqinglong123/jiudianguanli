@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>酒店管理系统</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <style>
+        body{
+            width:1360px;
+            height:700px;
+            background: url("/img/img2.jpg");
+            background-size: cover;
+        }
+        .box{
+            width:100%;
+            height:100%;
+            position: relative;
+        }
+        .cont{
+            width:50%;
+            height:60%;
+            color: #000;
+            background: rgba(200,200,200,0.6);
+            margin: 150px auto;
+        }
+        h4{
+            text-align: center;
+            margin-top: 35px;
+        }
+        .cont input{
+            border: none;
+            height:25px;
+            background: #fff;
+            opacity: 0.8;
+        }
+        .cha{
+            border: none;
+            height:25px;
+            line-height: 25px;
+            text-align: center;
+            width:50px;
+        }
+        .tui{
+            border: none;
+            height:25px;
+            line-height: 25px;
+            text-align: center;
+            width:50px;
+        }
+        .xinxi{
+            width:300px;
+            height:300px;
+            margin: 0 auto;
+            padding-top: 20px;
+            padding-left: 30px;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <div class="cont">
+        <h4>订单查询</h4>
+        <p style="padding-left: 200px">
+            订单查询: <input class="nr" type="text"> <button class="cha">查询</button><button class="tui">退出</button>
+        </p>
+        <h4>订单查询</h4>
+        <div class="xinxi">
+
+        </div>
+        <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">修改</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form id="biaodan2" action="/doadd" method="post">
+                            <p>入住日期: <input type="date" name="comeday"></p>
+                            <p>离店日期：<input type="date" name="goday" /></p>
+                            <p>房间类型：<select name="leixing" class="select" id="leixing"></select> </p>
+                            <p>预订数量：<input type="number" name="shuliang" /></p>
+                            <p>入住人姓名：<input type="text" name="name" /></p>
+                            <p>联系人：<input type="text" name="rename" /></p>
+                            <p>联系人电话：<input type="text" name="phone" /></p>
+                            <p>留言：<textarea id="text" name="liuyan" class="liuyan" id="liuyan" ></textarea></p>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" id="ok">ok</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="js/jquery-1.12.3.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/PageNav.js"></script>
+<script type="text/javascript" src="js/underscore.js"></script>
+<script>
+    //查询
+    $(".cha").click(function () {
+        var rename=$(".nr").val();
+        $(".xinxi").empty();
+        $.get("/yudingchaxun",function(data){
+            $(".xinxi").append(str);
+            var str="";
+            var data=data.result;
+            $.each(data, function (i, n) {
+                if(n.rename==rename){
+                    console.log(n)
+                    str= "<p class='comeday'>"+"入住日期:"+data[i].comeday+"</p>" +
+                        "<p class='goday'>"+"离店日期:"+data[i].goday+"</p>" +
+                        "<p class='leixing'>"+"房间类型:"+data[i].leixing+"    预订数量:"+data[i].shuliang+"</p>" +
+                        "<p class='name'>"+"入住人姓名:<span class='peoplename'>"+data[i].name+"</span></p>" +
+                        "<p class='rename'>"+"联系人:"+data[i].rename+"     联系人电话:"+data[i].phone+"</p>" +
+                        "<p class='liuyan'>"+"留言:"+data[i].liuyan+"</p>"+
+                        "<p><button class='quxiao'>取消订单</button><button type='button' data-toggle='modal' data-target='#myModal1' id='update' class='update'>修改</button></p>"
+                    $(".xinxi").append(str);
+                }
+            })
+        })
+    })
+    //退出
+    $(".tui").click(function () {
+        window.location="/"
+    })
+    //删除
+    $(".xinxi").delegate(".quxiao", "click", function () {
+        alert("000")
+        var sid=$(".peoplename").html();
+        console.log(sid);
+        $.ajax({
+            url: "/tuifang/" + sid,
+            type: "delete",
+            success: function (data) {
+                if (data.result == 1) {
+                    alert("删除成功");
+                    window.location="/chaxun"
+                } else {
+                    alert("服务器错误！");
+                }
+            }
+        });
+    })
+    //房间类别
+    $.get("/leibief",function(data){
+        var str="";
+        var data=data.result;
+        for(var i=0;i<data.length;i++){
+            str="<option>"+data[i].leixing+"</option>";
+            $(".select").append(str);
+        }
+    })
+    //修改
+    $(".xinxi").delegate(".update", "click", function () {
+        console.log($(".liuyan").val())
+        var sid=$(".peoplename").html();
+        console.log(sid)
+        $.get("/typedx/"+sid,function (data) {
+            if (data.result==-1){
+                alert("查无此人")
+            }else{
+                $("input[name=comeday]").val(data.result.comeday);
+                $("input[name=goday]").val(data.result.goday);
+                $(".select").val(data.result.leixing);
+                $("input[name=shuliang]").val(data.result.shuliang);
+                $("input[name=name]").val(data.result.name);
+                $("input[name=rename]").val(data.result.rename);
+                $("input[name=phone]").val(data.result.phone);
+                $(".liuyan").val(data.result.liuyan);
+            }
+        })
+    })
+    $("#ok").click(function () {
+        var sid=$(".peoplename").html();
+        $.post("/typedx/" + sid,{
+            comeday: $("input[name=comeday]").val(),
+            goday: $("input[name=goday]").val(),
+            leixing: $(".select").val(),
+            shuliang: $("input[name=shuliang]").val(),
+            name: $("input[name=name]").val(),
+            rename: $("input[name=rename]").val(),
+            phone: $("input[name=phone]").val(),
+            liuyan: $(".liuyan").val(),
+        },function(data){
+            if(data.result == 1){
+                window.location = "/chaxun";
+            }else{
+                alert("服务器错误！请联系管理员，怎么联系我也不知道！");
+            }
+        })
+    })
+</script>
+
+
+</body>
+</html>

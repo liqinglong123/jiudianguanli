@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>酒店管理系统</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <style>
+       body{
+           width:1360px;
+           height:680px;
+           background: url("/img/img2.jpg");
+           background-size: cover;
+       }
+        .box{
+            background:rgba(200, 200, 200, 0.6);
+            width: 500px;
+            margin: 100px auto;
+        }
+        form input{
+            height:22px;
+        }
+        form{
+            color:#000;
+        }
+        form p{
+            position: relative;
+            margin-left: 57px;
+        }
+       form p input,textarea,select{
+            position: absolute;
+           left:75px;
+           border:none;
+           /*background:rgba(200, 200, 200, 0.8);*/
+           background: #fff;
+           width:300px;
+        }
+       button{
+           width:80px;
+           height:30px;
+           line-height: 30px;
+           text-align: center;
+           border: none;
+           font-size: 13px;
+           background: #00aced;
+       }
+
+    </style>
+</head>
+<body>
+    <div class="box">
+        <form action="" method="post">
+            <p>
+                入住日期: <input name="comeday" type="date">
+            </p>
+            <p>
+                离店日期: <input name="goday" type="date">
+            </p>
+            <p>
+                房间类型: <select class="select" name="leixing" id=""></select>
+            </p>
+            <p>
+                <!--房间剩余数量: <span class="yumuch">6</span>-->
+                价格: <span class="daymoney">448元</span>/每天
+            </p>
+            <p>
+                预订数量: <input name="shuliang" type="text">
+            </p>
+            <p>
+                入住人姓名: <input name="name" type="text">
+            </p>
+            <p>
+                联系人: <input name="rename" type="text">
+            </p>
+            <p>
+                联系电话: <input name="phone" type="text">
+            </p>
+            <p style="height: 70px;">
+                留言: <textarea id="text" name="liuyan" class="liuyan" id="liuyan" ></textarea>
+            </p>
+        </form>
+            <p style="margin-left: 70px;padding-bottom: 20px;">
+                <button id="btn">提交订单</button>
+                <button id="reset">重置</button>
+                <button id="close">关闭本页</button>
+            </p>
+
+
+    </div>
+
+
+
+<script src="js/jquery-1.12.3.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/PageNav.js"></script>
+<script type="text/javascript" src="js/underscore.js"></script>
+<script>
+    $("#btn").click(function () {
+        $.post("/yuding", {
+            comeday: $("input[name=comeday]").val(),
+            goday: $("input[name=goday]").val(),
+            leixing: $(".select").val(),
+            shuliang: $("input[name=shuliang]").val(),
+            name: $("input[name=name]").val(),
+            rename: $("input[name=rename]").val(),
+            phone: $("input[name=phone]").val(),
+            liuyan: $(".liuyan").val()
+        }, function (data) {
+            if (data.result == 1) {
+                alert("提交成功！");
+                window.location.href = '/';
+            } else if (data.result == -1) {
+                alert("提交失败,被占用！");
+            } else if (data.result == -2) {
+                alert("服务器错误！请联系管理员，怎么联系我也不知道！");
+            }
+        })
+    });
+
+    $.get("/leibief",function(data){
+        var str="";
+        var data=data.result;
+        for(var i=0;i<data.length;i++){
+            str="<option>"+data[i].leixing+"</option>";
+            $(".select").append(str);
+        }
+    })
+    $(".select").click(function () {
+        console.log($(this).val())
+        var typename=$(this).val();
+        $.get("/jiagef",function(data){
+            var data=data.result;
+            $.each(data, function (i, n) {
+                if(n.leixing==typename){
+                   $(".daymoney").html(data[i].jiage)
+                    $(".yumuch").html(data[i].yushuliang)
+                }
+            })
+        })
+    })
+
+    $("#reset").click(function () {
+        $("input[type=text]").val("");
+        $("input[type=date]").val("");
+        $("#text").val("");
+    })
+    $("#close").click(function () {
+       window.location="/"
+    })
+
+
+</script>
+
+
+</body>
+</html>

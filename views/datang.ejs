@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>酒店管理系统</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <style>
+        body{
+            width:1360px;
+            height:904px;
+            /*background: url("/img/5.jpg");*/
+            background:#f5f5f5;
+            background-size: 100% 100%;
+            background: url(/img/img3.jpg);
+            background-size: cover;
+        }
+        .box{
+            width:100%;
+            height:100%;
+            position: relative;
+        }
+        .nav{
+            width:15%;
+            height:100%;
+            background: #fff;
+            /*background:rgba(200, 54, 54, 0.3);*/
+            font-size: 14px;
+            position: absolute;
+            left: 0;
+        }
+        ul li{
+            list-style: none;
+        }
+        li a {
+            color: #000;
+            text-align: center;
+            text-decoration: none;
+            margin-left: 15px;
+        }
+        .panel-title {
+            font-size: 13px;
+        }
+        .cont{
+            width:70%;
+            height:90%;
+            color: #000;
+            position: absolute;
+            left: 20%;
+            top:4%;
+        }
+        input{
+            height:30px;
+        }
+        h4{
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+        .fxx{
+            margin-top: 30px;
+        }
+        .double{
+            color:orange;
+            font-size:30px;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <div class="nav">
+        <ul>
+            <div class="leftMenu">
+                <div class="panel-heading" id="collapseListGroupHeading" data-toggle="collapse" data-target="#collapseListGroup" role="tab">
+                    <p class="panel-title">
+                        入住管理
+                        <span class="caret"></span>
+                    </p>
+                </div>
+                <div id="collapseListGroup" class="panel-collapse collapse" role="tabpanel" aria-labelledby="collapseListGroupHeading">
+                    <ul>
+                        <li><a href="/datang">大堂入住</a></li>
+                        <li><a href="/dingdan">订单入住</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="leftMenu">
+                <div class="panel-heading" id="collapseListGroupHeading1" data-toggle="collapse" data-target="#collapseListGroup1" role="tab">
+                    <p class="panel-title">
+                        退房管理
+                        <span class="caret"></span>
+                    </p>
+                </div>
+                <div id="collapseListGroup1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="collapseListGroupHeading1">
+                    <ul>
+                        <li><a href="/tuiroom">退房管理</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="leftMenu">
+                <div class="panel-heading" id="collapseListGroupHeading2" data-toggle="collapse" data-target="#collapseListGroup2" role="tab">
+                    <p class="panel-title">
+                        记录查询
+                        <span class="caret"></span>
+                    </p>
+                </div>
+                <div id="collapseListGroup2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="collapseListGroupHeading2">
+                    <ul>
+                        <li><a href="/comroot">记录查询</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="leftMenu">
+                <div class="panel-heading" id="collapseListGroupHeading3" data-toggle="collapse" data-target="#collapseListGroup3" role="tab">
+                    <p class="panel-title">
+                        房间管理
+                        <span class="caret"></span>
+                    </p>
+                </div>
+                <div id="collapseListGroup3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="collapseListGroupHeading3">
+                    <ul>
+                        <li><a href="/addroom">房间管理</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="leftMenu">
+                <div class="panel-heading" id="collapseListGroupHeading4" data-toggle="collapse" data-target="#collapseListGroup4" role="tab">
+                    <p class="panel-title">
+                        房类管理
+                        <span class="caret"></span>
+                    </p>
+                </div>
+                <div id="collapseListGroup4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="collapseListGroupHeading4">
+                    <ul>
+                        <li><a href="/leiroot">房类管理</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="leftMenu">
+                <div class="panel-heading" id="collapseListGroupHeading5" data-toggle="collapse" data-target="#collapseListGroup5" role="tab">
+                    <p class="panel-title">
+                        修改密码
+                        <span class="caret"></span>
+                    </p>
+                </div>
+                <div id="collapseListGroup5" class="panel-collapse collapse" role="tabpanel" aria-labelledby="collapseListGroupHeading5">
+                    <ul>
+                        <li><a href="/uodatamima">修改密码</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="leftMenu">
+                <div class="panel-heading" id="collapseListGroupHeading6" data-toggle="collapse" data-target="#collapseListGroup6" role="tab">
+                    <p class="panel-title">
+                        查看房间
+                        <span class="caret"></span>
+                    </p>
+                </div>
+                <div id="collapseListGroup6" class="panel-collapse collapse" role="tabpanel" aria-labelledby="collapseListGroupHeading6">
+                    <ul>
+                        <li><a href="/room">查看房间</a></li>
+                    </ul>
+                </div>
+            </div>
+
+        </ul>
+    </div>
+    <div class="cont">
+        <h4 class="double">顾客信息</h4>
+            <p>
+                <span>
+                    入住时间: <input class="comeday" type="date">
+                </span>
+            </p>
+            <p>
+                <span>
+                    离开时间: <input class="goday" type="date">
+                </span>
+            </p>
+            <p>
+                <span>
+                    证件类型:
+                    <select name="" id="" class="zhengjian">
+                        <option value="身份证">身份证</option>
+                        <option value="驾驶证">驾驶证</option>
+                    </select>
+                </span>
+            </p>
+            <p>
+                 <span>
+                    证件号: <input class="zhengjianhao" type="text">
+                </span>
+            </p>
+            <p>
+                    <span>
+                        姓名: <input class="rename" type="text">
+                    </span>
+            </p>
+            <p>
+                <span>
+                    性别:
+                    <select name="" class="sex">
+                        <option value="男">男</option>
+                        <option value="女">女</option>
+                    </select>
+                </span>
+            </p>
+        <h4 class="fxx double">房间信息</h4>
+        <p>
+                <span>
+                    房间类型: <select class="select" name="leixing" id=""></select>
+                </span>
+        </p>
+        <p>
+              <span>
+                    房间号: <select name="" class="fangjian"></select>
+                </span>
+        </p>
+        <p>
+            价格: <span class="jiage"></span>
+        </p>
+        <p>
+            入住人姓名: <input class="name" type="text">
+        </p>
+        <p>
+            <input type="button" class="btn btn-success" value="办理入住">
+        </p>
+    </div>
+</div>
+
+
+
+
+<script src="js/jquery-1.12.3.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/PageNav.js"></script>
+<script type="text/javascript" src="js/underscore.js"></script>
+<script>
+    //房间类别
+    $.get("/leibief",function(data){
+        var str="";
+        var data=data.result;
+        for(var i=0;i<data.length;i++){
+            str="<option>"+data[i].leixing+"</option>";
+            $(".select").append(str);
+        }
+    })
+    //房间号
+    $(".select").click(function () {
+        var typename=$(this).val();
+        $.get("/fanghao",function(data){
+            $(".fangjian").empty();
+            var str="";
+            var data=data.result;
+            $.each(data, function (i, n) {
+                if(n.leixing==typename&&n.zhuangtai=="未入住"){
+                    str="<option>"+data[i].sid+"</option>";
+                    $(".fangjian").append(str);
+                }
+            })
+        })
+    })
+
+    //办理入住
+    $(".btn").click(function () {
+        var comeday=$(".comeday").val();
+        var goday=$(".goday").val();
+        var starttime= comeday.split("-")[2];
+        var endtime  = goday.split("-")[2];
+        var time=endtime-starttime;
+        console.log(time)
+        console.log(comeday)
+        $.post("/ruzhu", {
+            sid:$(".fangjian").val(),
+            comeday: comeday,
+            goday: goday,
+            name: $(".name").val(),
+            rename:$(".rename").val(),
+            zhengjianhao: $(".zhengjianhao").val(),
+            sex: $(".sex").val(),
+            fanghao: $(".fangjian").val(),
+            leixing: $(".select").val(),
+            zhuangtai:"已入住",
+            xiaofei: $(".jiage").html()*time,
+            zjleixing:$(".zhengjian").val(),
+            riqi:$(".comeday").html(),
+            jiage:$(".jiage").html(),
+            yushuliang:$(".shengyu").html()-1,
+        }, function (data) {
+            if (data.result == 1) {
+                alert("提交成功！");
+                window.location.reload();
+            } else if (data.result == -1) {
+                alert("提交失败,被占用！");
+            } else if (data.result == -2) {
+                alert("服务器错误！请联系管理员，怎么联系我也不知道！");
+            }
+        })
+    });
+    //更改房号信息
+    $(".btn").click(function () {
+        var sid=$(".fangjian").val();
+        console.log(sid);
+        var zhuangtai="已入住";
+        console.log(zhuangtai);
+        $.post("/fanghaotype/" + sid,{
+            zhuangtai: zhuangtai
+        },function(data){
+            if(data.result == 1){
+                alert("成功")
+            }else{
+                alert("服务器错误！请联系管理员，怎么联系我也不知道！");
+            }
+        })
+    });
+    //价格
+    $(".select").click(function () {
+        var typename=$(this).val();
+        $.get("/jiagef",function(data){
+            var data=data.result;
+            $.each(data, function (i, n) {
+                if(n.leixing==typename){
+                    $(".jiage").html(data[i].jiage)
+                    $(".shengyu").html(data[i].yushuliang)
+                }
+            })
+        })
+    })
+
+    // $(".btn").click(function () {
+    //     var sid=$(".select").val();
+    //     console.log(sid);
+    //     var yushuliang=$(".shengyu").html();
+    //     console.log(yushuliang);
+    //     $.post("/shufanghaotype/" + sid,{
+    //         yushuliang: yushuliang
+    //     },function(data){
+    //         if(data.result == 1){
+    //             alert("成功")
+    //         }else{
+    //             alert("服务器错误！请联系管理员，怎么联系我也不知道！");
+    //         }
+    //     })
+    // });
+</script>
+
+
+</body>
+</html>

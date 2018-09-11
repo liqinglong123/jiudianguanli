@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>酒店管理系统</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <style>
+        body{
+            width:1360px;
+            height:700px;
+            background: url("/img/img1.jpg");
+            background-size:cover;
+        }
+        .box{
+            width:100%;
+            height:100%;
+            position: relative;
+        }
+        .nav{
+            width:800px;
+            height:30px;
+            margin: 50px auto;
+            margin-left:181px;
+            margin-top:60px;
+            background:#5C4D4A;
+            border-radius: 10px;
+            color:pink;
+        }
+        ul{
+            width:800px;
+            height:100%;
+            border-radius: 10px;
+        }
+        ul li{
+            float: left;
+            list-style: none;
+            width:20%;
+            height:30px;
+            line-height: 30px;
+            text-align: center;
+            border:1px solid pink;
+            color:#b739b9;
+        }
+        ul li:first-child{
+            border:none;
+        }
+        ul li:last-child{
+            border:none;
+        }
+        ul li a{
+            color:pink;
+        }
+        .cont{
+            width:1000px;
+            margin: 0 auto;
+            background:gray;
+            color:#000;
+            position: absolute;
+            right: 0;
+            top: 75%;
+        }
+        thead tr th{
+            background: #c0c0c0;
+        }
+        h1{
+            font-size: 60px;
+            margin-left:181px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h1>久清酒店欢迎你</h1>
+        <div class="nav">
+            <ul>
+                <li><a href="/">首页</a></li>
+                <li><a href="/yuding">在线预订</a></li>
+                <li><a href="/chaxun">订单查询</a></li>
+                <li><a href="/manage">酒店管理</a></li>
+                <li><a href="/">关于我们</a></li>
+            </ul>
+        </div>
+        <div class="cont">
+            <table class="table  table-striped navbar-default" style="margin-top: 50px">
+                <thead>
+                    <tr>
+                        <th>类别标识</th>
+                        <th>房间类型</th>
+                        <th>面积(平方米)</th>
+                        <th>床位数</th>
+                        <th>早餐</th>
+                        <th>网络</th>
+                        <th>电视</th>
+                        <th>价格(元/每天)</th>
+                        <th></th>
+                    </tr>
+                </thead>
+
+                <tbody id="tbody"></tbody>
+
+            </table>
+            <div id="pagenavbox"></div>
+        </div>
+    </div>
+
+
+
+<script src="js/jquery-1.12.3.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/PageNav.js"></script>
+<script type="text/javascript" src="js/underscore.js"></script>
+<script>
+    $.get("/doadd?page=1", function (data) {
+        new PageNav({
+            boxid: "pagenavbox",
+            page: 1,
+            pageAmount: data.pageAmount,
+            change: function (pagenumber) {
+                gotopage(pagenumber);
+            }
+        });
+        gotopage(1);
+    });
+    function gotopage(pagenumber) {
+        $("#tbody").empty();
+        $.get("/doadd?page=" + pagenumber, function (data) {
+            $.each(data.results, function (i, n) {
+                //创建一个tr标签
+                $tr = $("<tr class='shows'></tr>");
+                $("<td></td>").html(n.sid).appendTo($tr);
+                $("<td></td>").html(n.leixing).appendTo($tr);
+                $("<td></td>").html(n.mianji).appendTo($tr);
+                $("<td></td>").html(n.chuangshuliang).appendTo($tr);
+                $("<td></td>").html(n.zaocan).appendTo($tr);
+                $("<td></td>").html(n.wangluo).appendTo($tr);
+                $("<td></td>").html(n.dianshi).appendTo($tr);
+                $("<td></td>").html(n.jiage).appendTo($tr);
+                $("<td></td>").html("<button type='button' id='yuding' class='work'><a href='/yuding'>免费预订</a></button>").appendTo($tr);
+                //上树
+                $tr.appendTo($("#tbody"));
+            });
+        });
+    }
+
+</script>
+
+
+</body>
+</html>

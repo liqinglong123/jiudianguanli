@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>酒店管理系统</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <style>
+        body{
+            width:1360px;
+            height:904px;
+            /*background: url("/img/5.jpg");*/
+            background:#f5f5f5;
+            background-size: 100% 100%;
+            background: url(/img/img3.jpg);
+            background-size: cover;
+        }
+        .box{
+            width:100%;
+            height:100%;
+            position: relative;
+        }
+        .nav{
+            width:15%;
+            height:100%;
+            background: #fff;
+            /*background:rgba(200, 54, 54, 0.3);*/
+            font-size: 14px;
+            position: absolute;
+            left: 0;
+        }
+        ul li{
+            list-style: none;
+        }
+        li a {
+            color: #000;
+            text-align: center;
+            text-decoration: none;
+            margin-left: 15px;
+        }
+        .panel-title {
+            font-size: 13px;
+        }
+        .cont{
+            width:70%;
+            height:90%;
+            color: #000;
+            position: absolute;
+            left: 20%;
+            top:4%;
+            /*background:rgba(200, 54, 54, 0.3);*/
+        }
+        h4{
+            text-align: center;
+            margin-top: 35px;
+        }
+        .cont input{
+            border: none;
+            height:25px;
+            background: #fff;
+            border:1px solid #ccc;
+            opacity: 0.8;
+        }
+        .cont table{
+            width: 800px;
+            margin-left: 70px;
+        }
+        button.button {
+            margin-left: 70px;
+        }
+        div#pagenavbox {
+            margin-left: 70px;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <div class="nav">
+        <ul>
+            <div class="leftMenu">
+                <div class="panel-heading" id="collapseListGroupHeading" data-toggle="collapse" data-target="#collapseListGroup" role="tab">
+                    <p class="panel-title">
+                        入住管理
+                        <span class="caret"></span>
+                    </p>
+                </div>
+                <div id="collapseListGroup" class="panel-collapse collapse" role="tabpanel" aria-labelledby="collapseListGroupHeading">
+                    <ul>
+                        <li><a href="/datang">大堂入住</a></li>
+                        <li><a href="/dingdan">订单入住</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="leftMenu">
+                <div class="panel-heading" id="collapseListGroupHeading1" data-toggle="collapse" data-target="#collapseListGroup1" role="tab">
+                    <p class="panel-title">
+                        退房管理
+                        <span class="caret"></span>
+                    </p>
+                </div>
+                <div id="collapseListGroup1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="collapseListGroupHeading1">
+                    <ul>
+                        <li><a href="/tuiroom">退房管理</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="leftMenu">
+                <div class="panel-heading" id="collapseListGroupHeading2" data-toggle="collapse" data-target="#collapseListGroup2" role="tab">
+                    <p class="panel-title">
+                        记录查询
+                        <span class="caret"></span>
+                    </p>
+                </div>
+                <div id="collapseListGroup2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="collapseListGroupHeading2">
+                    <ul>
+                        <li><a href="/comroot">记录查询</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="leftMenu">
+                <div class="panel-heading" id="collapseListGroupHeading3" data-toggle="collapse" data-target="#collapseListGroup3" role="tab">
+                    <p class="panel-title">
+                        房间管理
+                        <span class="caret"></span>
+                    </p>
+                </div>
+                <div id="collapseListGroup3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="collapseListGroupHeading3">
+                    <ul>
+                        <li><a href="/addroom">房间管理</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="leftMenu">
+                <div class="panel-heading" id="collapseListGroupHeading4" data-toggle="collapse" data-target="#collapseListGroup4" role="tab">
+                    <p class="panel-title">
+                        房类管理
+                        <span class="caret"></span>
+                    </p>
+                </div>
+                <div id="collapseListGroup4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="collapseListGroupHeading4">
+                    <ul>
+                        <li><a href="/leiroot">房类管理</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="leftMenu">
+                <div class="panel-heading" id="collapseListGroupHeading5" data-toggle="collapse" data-target="#collapseListGroup5" role="tab">
+                    <p class="panel-title">
+                        修改密码
+                        <span class="caret"></span>
+                    </p>
+                </div>
+                <div id="collapseListGroup5" class="panel-collapse collapse" role="tabpanel" aria-labelledby="collapseListGroupHeading5">
+                    <ul>
+                        <li><a href="/uodatamima">修改密码</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="leftMenu">
+                <div class="panel-heading" id="collapseListGroupHeading6" data-toggle="collapse" data-target="#collapseListGroup6" role="tab">
+                    <p class="panel-title">
+                        查看房间
+                        <span class="caret"></span>
+                    </p>
+                </div>
+                <div id="collapseListGroup6" class="panel-collapse collapse" role="tabpanel" aria-labelledby="collapseListGroupHeading6">
+                    <ul>
+                        <li><a href="/room">查看房间</a></li>
+                    </ul>
+                </div>
+            </div>
+
+        </ul>
+    </div>
+    <div class="cont">
+        <h4>房间类别信息</h4>
+        <button class="button btn-success" type="button" data-toggle="modal" data-target="#myModal">增加分类</button>
+        <div class="container">
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">增加分类</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form id="biaodan" action="/doadd" method="post">
+                                <p>房间号: <input type="text" name="sid" /></p>
+                                <p>房间类型：<select class="select" name="leixing" id=""></select></p>
+                                <p>房间位置：<input type="text" name="weizhi" /></p>
+                                <p>房间描述：<input type="text" name="miaoshu" /></p>
+                                <p>房间状态：
+                                    <!--<input type="text" name="zhuangtai" />-->
+                                    <select name="zhuangtai" id="zhuangtai">
+                                        <option value="未入住">未入住</option>
+                                        <option value="已入住">已入住</option>
+                                    </select>
+                                </p>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" id="btn">ok</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">修改</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form id="biaodan2" action="/doadd" method="post">
+                                <p>房间号: <input type="text" name="sid" /></p>
+                                <p>房间类型：<select class="select" name="leixing" id="selects"></select></p>
+                                <p>房间位置：<input type="text" name="weizhis" /></p>
+                                <p>房间描述：<input type="text" name="miaoshus" /></p>
+                                <p>房间状态：
+                                    <!--<input type="text" name="zhuangtais" />-->
+                                    <select name="zhuangtais" id="zhuangtais">
+                                        <option value="未入住">未入住</option>
+                                        <option value="已入住">已入住</option>
+                                    </select>
+                                </p>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" id="ok">ok</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <table class="table  table-striped navbar-default" style="margin-top: 20px">
+            <tr>
+                <th>房间号</th>
+                <th>房间类型</th>
+                <th>房间位置</th>
+                <th>房间描述</th>
+                <th>房间状态</th>
+                <th>操作项</th>
+            </tr>
+
+            <tbody id="tbody"></tbody>
+
+        </table>
+        <div id="pagenavbox"></div>
+    </div>
+</div>
+
+
+
+<script src="js/jquery-1.12.3.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/PageNav.js"></script>
+<script type="text/javascript" src="js/underscore.js"></script>
+<script>
+    //拿到房间类别
+    $.get("/leibief",function(data){
+        var str="";
+        var data=data.result;
+        for(var i=0;i<data.length;i++){
+            str="<option>"+data[i].leixing+"</option>";
+            $(".select").append(str);
+        }
+    })
+    //分页获取数据
+    $.get("/doaddfh?page=1", function (data) {
+        new PageNav({
+            boxid: "pagenavbox",
+            page: 1,
+            pageAmount: data.pageAmount,
+            change: function (pagenumber) {
+                gotopage(pagenumber);
+            }
+        });
+        gotopage(1);
+    });
+    function gotopage(pagenumber) {
+        $("#tbody").empty();
+        $.get("/doaddfh?page=" + pagenumber, function (data) {
+            $.each(data.results, function (i, n) {
+                //创建一个tr标签
+                $tr = $("<tr class='shows'></tr>");
+                $("<td></td>").html(n.sid).appendTo($tr);
+                $("<td></td>").html(n.leixing).appendTo($tr);
+                $("<td></td>").html(n.weizhi).appendTo($tr);
+                $("<td></td>").html(n.miaoshu).appendTo($tr);
+                $("<td></td>").html(n.zhuangtai).appendTo($tr);
+                $("<td></td>").html("<button type='button' data-toggle='modal' data-target='#myModal1' id='update' class='work update'>修改</button> <button type='button' class='work del'>删除</button>").appendTo($tr);
+                //上树
+                $tr.appendTo($("#tbody"));
+            });
+        });
+    }
+    //增加
+    $("#btn").click(function () {
+        $.post("/doaddfh", {
+            sid: parseInt($("input[name=sid]").val()),
+            leixing: $(".select").val(),
+            weizhi: $("input[name=weizhi]").val(),
+            miaoshu: $("input[name=miaoshu]").val(),
+            zhuangtai: $("#zhuangtai").val(),
+        }, function (data) {
+            if (data.result == 1) {
+                alert("提交成功！");
+                window.location.href = '/addroom';
+                $("input[type=text]").val("");
+            } else if (data.result == -1) {
+                alert("提交失败,被占用！");
+            } else if (data.result == -2) {
+                alert("服务器错误！请联系管理员，怎么联系我也不知道！");
+            }
+        })
+    });
+    //修改
+    $("#tbody").delegate(".update", "click", function () {
+        var This = $(this).parent().parent().children();
+        var sid = $(This).eq(0).html();
+        console.log(sid)
+        $.get("/fhtype/"+sid,function (data) {
+            if (data.result==-1){
+                alert("查无此人")
+            }else{
+                $("input[name=sid]").val(data.result.sid);
+                $("#selects").val(data.result.leixing);
+                $("input[name=weizhis]").val(data.result.weizhi);
+                $("input[name=miaoshus]").val(data.result.miaoshu);
+                $("#zhuangtais").val(data.result.zhuangtai);
+            }
+        })
+    })
+    $("#ok").click(function () {
+        var  sid = parseInt($("input[name=sid]").val());
+        $.post("/fhtype/" + sid,{
+            sid: parseInt($("input[name=sid]").val()),
+            leixings: $("#selects").val(),
+            weizhis: $("input[name=weizhis]").val(),
+            miaoshus: $("input[name=miaoshus]").val(),
+            zhuangtais: $("#zhuangtais").val(),
+        },function(data){
+            if(data.result == 1){
+                window.location = "/addroom";
+            }else{
+                alert("服务器错误！请联系管理员，怎么联系我也不知道！");
+            }
+        })
+    })
+    //删除
+    $("#tbody").delegate(".del", "click", function () {
+        console.log(111)
+        var This = $(this).parents().children();
+        var sid = $(This).eq(2).html();
+        console.log(sid)
+        $.ajax({
+            url: "/doaddfh/" + sid,
+            type: "delete",
+            success: function (data) {
+                if (data.result == 1) {
+                    alert("删除成功");
+                    This.parents("tr").remove();
+                    window.location.href = '/addroom'
+                } else {
+                    alert("服务器错误！");
+                }
+            }
+        });
+
+    })
+
+
+</script>
+
+
+</body>
+</html>
